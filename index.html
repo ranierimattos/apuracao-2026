@@ -88,6 +88,7 @@
   .disc b { color: var(--ink); }
   .cred { margin-top: 14px; color: var(--ink); }
   .cred a { color: inherit; }
+  .live a, .disc a { color: inherit; text-decoration: underline; }
   footer { color: var(--muted); font-size: 12px; margin-top: 18px; }
   @media (max-width: 900px) { .main { grid-template-columns: 1fr; } .cand .pc { font-size: 32px; } }
   @media (max-width: 480px) { .duel { grid-template-columns: 1fr; } }
@@ -136,7 +137,7 @@
   <footer>
     <div class="disc">
       <h2>Sobre os dados e os cálculos</h2>
-      <p><b>Origem.</b> Todos os números vêm de dados públicos de totalização divulgados pelo Tribunal Superior Eleitoral (TSE) em <code>resultados.tse.jus.br</code>. O contorno do mapa vem da malha territorial pública do IBGE. Este painel é uma iniciativa independente, sem vínculo com o TSE, o IBGE, partidos ou candidaturas. Só o TSE divulga o resultado oficial.</p>
+      <p><b>Origem.</b> Todos os números vêm de dados públicos de totalização divulgados pelo Tribunal Superior Eleitoral (TSE) em <a href='https://resultados.tse.jus.br/' target='_blank' rel='noopener'><code>resultados.tse.jus.br</code></a>. O contorno do mapa vem da malha territorial pública do IBGE. Este painel é uma iniciativa independente, sem vínculo com o TSE, o IBGE, partidos ou candidaturas. Só o TSE divulga o resultado oficial.</p>
       <p><b>Apuração atual.</b> O percentual apurado é a razão entre seções totalizadas e seções totais (no Brasil) ou entre as somas dos estados (nas regiões). Os percentuais dos candidatos são sobre votos válidos, sem brancos e nulos. Cada região soma os votos de seus estados; o voto no exterior entra só no total nacional. A cor do mapa mostra o líder da região, e quanto mais forte, maior a vantagem.</p>
       <p><b>Projeção a 100%.</b> Em cada estado, os votos de cada candidato são divididos pela fração do eleitorado já apurada, mantendo a proporção atual entre eles naquele estado. Depois somam-se os estados e o exterior. É uma extrapolação aritmética, não uma pesquisa, uma previsão estatística ou um resultado: as urnas ainda não apuradas (zonas rurais, cidades menores, locais distantes) podem votar diferente das já contadas, e a incerteza é maior quanto menor a apuração.</p>
       <p><b>Atualização.</b> Enquanto a página estiver aberta, ela consulta o TSE diretamente a cada 60 segundos. Se o TSE ficar indisponível, mostra o último instantâneo guardado na página, com o horário indicado no topo. Os dados do TSE podem ser revisados após a divulgação. Confira sempre a fonte oficial antes de citar ou decidir com base nestes números.</p>
@@ -361,7 +362,7 @@ function destacar(k) {
 
 function tick() {
   $('btn').hidden = !ao_vivo;
-  $('status').innerHTML = ao_vivo ? `Ao vivo · próxima atualização em ${countdown}s`
+  $('status').innerHTML = ao_vivo ? `Ao vivo com dados do <a href='https://resultados.tse.jus.br/' target='_blank' rel='noopener'>TSE</a> · próxima atualização em ${countdown}s`
     : `Atualizado automaticamente a cada minuto com dados do <a href='https://resultados.tse.jus.br/' target='_blank' rel='noopener'>TSE</a> · totalização de ${state.nacional.dg} às ${state.nacional.hg} · verificado às ${VERIF} · recarrega em ${countdown}s`;
 }
 
