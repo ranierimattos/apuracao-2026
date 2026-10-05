@@ -168,7 +168,7 @@
       <ul>
         <li><b>1. Placar.</b> a2 = 21,08% + Δ, com Δ entre −3,5 e +3,5 pontos.</li>
         <li><b>2. Comparecimento.</b> T2 = T1 − Δ ÷ 100 × eleitorado.</li>
-        <li><b>3. Votos válidos do 2º turno.</b> V2 = T2 × (1 − inválidos2), com inválidos2 = 4,77% × 0,97 = 4,63%. O fator 0,97 é a média das razões entre os inválidos do 2º e do 1º turno em 2018 (9,58% ÷ 10,75% = 0,89) e 2022 (4,66% ÷ 4,41% = 1,06). Em 2002 a 2010 a razão foi de 0,58 a 0,78, mas a base de inválidos era bem maior.</li>
+        <li><b>3. Votos válidos do 2º turno.</b> V2 = T2 × (1 − inválidos2). Os inválidos (brancos + nulos) do 2º turno vêm de uma regressão linear com as seis eleições de 2002 a 2022: inválidos2 = 2,05% + 0,515 × inválidos1 (R² = 0,52; erro padrão de 1,28 ponto). Com 4,77% no 1º turno de 2026, projeta 4,51% no 2º turno, o que equivale a um fator de 0,95 sobre o 1º turno. A média simples das razões (0,78) não foi usada: as eleições antigas partiam de bases de inválidos de 8% a 11% e caíam muito, enquanto em 2022, com base de 4,4%, os inválidos subiram; a regressão leva em conta o tamanho da base.</li>
         <li><b>4. Transferência.</b> Para cada candidato eliminado, com v votos: para Flávio v×f, para Lula v×l, não migra v×(1−f−l). Migrados: F<sub>m</sub> = 56.103.520 + Σ v×f; L<sub>m</sub> = 53.873.874 + Σ v×l. N = soma dos "não migra".</li>
         <li><b>5. Restante.</b> R = V2 − (V1 − N). R &gt; 0: eleitores que vão às urnas além dos migrados, inclusive brancos e nulos que passam a votar e abstenção que recua. R &lt; 0: votos que somem. Os "não migra" já estão dentro de V2, sem contagem dupla, e F + L = V2 em qualquer cenário.</li>
         <li><b>6. Quem leva mais eleitores.</b> A barra define a participação de cada lado na mobilização: q<sub>Lula</sub> + q<sub>Flávio</sub> = 100%, cada uma entre 25% e 75%. Se R &gt; 0, Lula recebe R × q<sub>Lula</sub> e Flávio R × q<sub>Flávio</sub>. Se R &lt; 0, Lula perde |R| × q<sub>Flávio</sub> e Flávio perde |R| × q<sub>Lula</sub>: quem leva mais eleitores ganha mais e perde menos.</li>
@@ -181,7 +181,7 @@
       <ul>
         <li>2002: 17,74% → 20,47% (+2,73) · 2006: 16,75% → 18,99% (+2,24) · 2010: 18,12% → 21,50% (+3,38) · 2014: 19,39% → 21,10% (+1,71) · 2018: 20,32% → 21,29% (+0,97) · 2022: 20,95% → 20,59% (−0,36). 1998: 21,49% em turno único.</li>
         <li>+8% relativo sobre 21,08% = +1,69 ponto.</li>
-        <li>Inválidos (brancos e nulos) sobre o comparecimento, 1º → 2º turno: 2002: 10,39% → 6,00%; 2006: 8,39% → 6,04%; 2010: 8,64% → 6,70%; 2018: 10,75% → 9,58%; 2022: 4,41% → 4,66%. 2026, 1º turno: 4,77%.</li>
+        <li>Inválidos (brancos e nulos) sobre o comparecimento, 1º → 2º turno: 2002: 10,39% → 6,00% (razão 0,58); 2006: 8,39% → 6,04% (0,72); 2010: 8,64% → 6,70% (0,78); 2014: 9,64% → 6,34% (0,66); 2018: 10,75% → 9,57% (0,89); 2022: 4,41% → 4,59% (1,04). Média das razões 0,78; mediana 0,75. 2026, 1º turno: 4,77%.</li>
         <li>Em 2022 foi a primeira vez que o comparecimento subiu no 2º turno, associado à mobilização da polarização e à gratuidade de transporte em várias cidades.</li>
       </ul>
 
@@ -219,7 +219,8 @@ const ELEITORADO = 158745502, T1 = 125268748, ABSTENCAO = 33467898;   // TSE, fe
 const ABST1 = ABSTENCAO / ELEITORADO * 100;                         // 21,08%: placar de partida
 const V1 = 119293979;                                               // votos nominais do 1º turno
 const INV1 = (2300739 + 3668784) / T1;                              // brancos e nulos sobre o comparecimento (4,77%)
-const K_INV = 0.97;                                                 // inválidos no 2º turno = 1º turno × 0,97 (média das razões de 2018 e 2022)
+const INV2_A = 2.0544, INV2_B = 0.5152;                             // regressão 2002–2022: inválidos do 2º turno (%) = A + B × inválidos do 1º turno (%)
+const INV2 = (INV2_A + INV2_B * INV1 * 100) / 100;                   // ≈ 4,51% do comparecimento
 
 // variação histórica da abstenção do 1º para o 2º turno (pontos percentuais, TSE)
 const MU = 1.0, SIGMA = 1.3;   // projeção central e dispersão histórica
@@ -270,7 +271,7 @@ function desenhar(){
   // votos válidos do 2º turno fixados pelo cenário; o restante (V2 − migrados) é distribuído pela barra
   const m = migracao();
   const T2 = T1 - dpp/100*ELEITORADO;                   // comparecimento do 2º turno
-  const V2 = T2 * (1 - INV1*K_INV);                     // votos válidos do 2º turno
+  const V2 = T2 * (1 - INV2);                     // votos válidos do 2º turno
   const R = V2 - (V1 - m.N);                            // > 0: votos a mais; < 0: votos a menos
   const v = +$('sl-quem').value, qF = v, qL = 100 - v;  // participação de cada lado na mobilização (25 a 75; à esquerda, Lula leva mais)
   const gF = R>=0 ? R*qF/100 : R*qL/100;                // quem leva mais ganha mais e perde menos
@@ -284,7 +285,7 @@ function desenhar(){
   $('cl').textContent = qL+'%'; $('cf').textContent = qF+'%';
   $('cls').textContent = `${R>=0?'ganha':'perde'} ${mi(Math.abs(gL))}`; $('cfs').textContent = `${R>=0?'ganha':'perde'} ${mi(Math.abs(gF))}`;
   // dicas ao passar o mouse nos títulos
-  $('t-abs').title = `Abstenção do 1º turno: ${nf(ABST1)}%. Projetada para o 2º turno: ${nf(a2)}%. Comparecimento: ${nf(Math.abs(T2-T1)/1e6,2)} mi a ${T2<T1?'menos':'mais'} que no 1º turno. Votos válidos projetados: ${int(V2)} (inválidos em ${nf(INV1*K_INV*100)}%, contra ${nf(INV1*100)}% no 1º turno). Os ${mi(m.N)} que não migram já estão nesse total; o restante (${mi(Math.abs(R))}, ${R>=0?'votos a mais':'votos a menos'}) é distribuído pela barra abaixo.`;
+  $('t-abs').title = `Abstenção do 1º turno: ${nf(ABST1)}%. Projetada para o 2º turno: ${nf(a2)}%. Comparecimento: ${nf(Math.abs(T2-T1)/1e6,2)} mi a ${T2<T1?'menos':'mais'} que no 1º turno. Votos válidos projetados: ${int(V2)} (inválidos em ${nf(INV2*100)}%, contra ${nf(INV1*100)}% no 1º turno). Os ${mi(m.N)} que não migram já estão nesse total; o restante (${mi(Math.abs(R))}, ${R>=0?'votos a mais':'votos a menos'}) é distribuído pela barra abaixo.`;
   const prop = Math.round(m.L/(m.F+m.L)*100);
   $('t-quem').title = `Divide entre os dois lados quem leva eleitores às urnas. Quem leva mais fica com a maior parte dos votos a mais (se mais eleitores forem votar) e perde a menor parte (se mais eleitores ficarem em casa). Referência: proporcional ao tamanho dos eleitorados seria Lula ${prop}% e Flávio ${100-prop}%. O centro (50/50) divide em partes iguais.`;
 }
