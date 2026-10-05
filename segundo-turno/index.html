@@ -255,7 +255,7 @@ const int = n => Math.round(n).toLocaleString('pt-BR');
 const mi = n => nf(n/1e6,2)+' mi';
 
 // ---- contagem anônima de uso (GoatCounter). Vazio = desligada. Código: o nome da conta em goatcounter.com ----
-const GC_CODE = '';
+const GC_CODE = 'nexuscentral';
 const _contados = {};
 function contar(evento){
   if (!GC_CODE || _contados[evento]) return;               // cada tipo de uso conta uma vez por visita
