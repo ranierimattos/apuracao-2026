@@ -129,7 +129,7 @@
 
   <section class="card">
     <h2 id="t-abs" title="">Simula abstenção</h2>
-    <div class="score"><b id="placar">21,07%</b><span id="delta">+0,00 p.p.</span></div>
+    <div class="score"><b id="placar">21,08%</b><span id="delta">+0,00 p.p.</span></div>
     <div class="obs" id="obs"></div>
     <div class="fine">
       <button class="round" id="menos" type="button" aria-label="Diminuir 0,01 ponto">−</button>
@@ -160,18 +160,19 @@
       <h3>Dados do 1º turno (fixos)</h3>
       <ul>
         <li>Resultado final da apuração do TSE, eleição 6257 (1º turno, presidente), 99,99% das seções, 04/10/2026 às 23:37:27. <a href="https://resultados.tse.jus.br/" target="_blank" rel="noopener">resultados.tse.jus.br</a></li>
-        <li>Votos: Flávio Bolsonaro 56.103.520; Lula 53.873.874; Augusto Cury 3.448.500; Renan Santos 2.675.872; Ronaldo Caiado 2.605.080; Zema 326.485; Clariana Barão e Wilson Grassi 56.919; Samara, Hertz Dias, Edmilson Costa e Rui Costa Pimenta 203.729.</li>
-        <li>Comparecimento 124.483.085 e abstenção 33.236.331 (21,07%), valores informados pelo autor. O TSE mostra 21,08% no fechamento (33.467.898 de 158.745.502).</li>
-        <li>Votos nominais sobre comparecimento: 119.293.979 ÷ 125.268.748 = 95,23%.</li>
+        <li>Votos: Flávio Bolsonaro 56.103.520; Lula 53.873.874; Augusto Cury 3.448.500; Renan Santos 2.675.872; Ronaldo Caiado 2.605.080; Zema 326.485; Clariana Barão e Wilson Grassi 56.919; Samara, Hertz Dias, Edmilson Costa e Rui Costa Pimenta 203.729. Soma (votos nominais): V1 = 119.293.979.</li>
+        <li>Eleitorado 158.745.502; comparecimento T1 = 125.268.748; abstenção 33.467.898 (21,08%). Brancos 2.300.739 e nulos 3.668.784: inválidos = 4,77% do comparecimento.</li>
       </ul>
 
       <h3>Cálculo do resultado</h3>
       <ul>
-        <li><b>Transferência.</b> Para cada candidato eliminado, com v votos: para Flávio v×f, para Lula v×l, não migra v×(1−f−l). Flávio = 56.103.520 + Σ v×f; Lula = 53.873.874 + Σ v×l.</li>
-        <li><b>Abstenção.</b> a2 = 21,07% + Δ. Eleitores que deixam de votar = Δ ÷ 100 × 157.719.416. Votos válidos afetados = esse número × 95,23%.</li>
-        <li><b>Quem não migra</b> (brancos, nulos e abstenção) já faz parte da abstenção projetada. Restante = votos afetados − não migra (se der negativo com Δ ≥ 0, vale 0).</li>
-        <li><b>Distribuição.</b> Com x entre 25% e 75% (barra "quem leva mais eleitores"): Lula perde restante × x; Flávio perde restante × (100 − x). Se Δ &lt; 0, os mesmos valores são votos acrescentados.</li>
-        <li><b>Resultado.</b> % de Flávio = F ÷ (F + L), em votos válidos. A diferença é a distância entre os dois, em pontos percentuais.</li>
+        <li><b>1. Placar.</b> a2 = 21,08% + Δ, com Δ entre −3,5 e +3,5 pontos.</li>
+        <li><b>2. Comparecimento.</b> T2 = T1 − Δ ÷ 100 × eleitorado.</li>
+        <li><b>3. Votos válidos do 2º turno.</b> V2 = T2 × (1 − inválidos2), com inválidos2 = 4,77% × 0,97 = 4,63%. O fator 0,97 é a média das razões entre os inválidos do 2º e do 1º turno em 2018 (9,58% ÷ 10,75% = 0,89) e 2022 (4,66% ÷ 4,41% = 1,06). Em 2002 a 2010 a razão foi de 0,58 a 0,78, mas a base de inválidos era bem maior.</li>
+        <li><b>4. Transferência.</b> Para cada candidato eliminado, com v votos: para Flávio v×f, para Lula v×l, não migra v×(1−f−l). Migrados: F<sub>m</sub> = 56.103.520 + Σ v×f; L<sub>m</sub> = 53.873.874 + Σ v×l. N = soma dos "não migra".</li>
+        <li><b>5. Restante.</b> R = V2 − (V1 − N). R &gt; 0: eleitores que vão às urnas além dos migrados, inclusive brancos e nulos que passam a votar e abstenção que recua. R &lt; 0: votos que somem. Os "não migra" já estão dentro de V2, sem contagem dupla, e F + L = V2 em qualquer cenário.</li>
+        <li><b>6. Quem leva mais eleitores.</b> A barra define a participação de cada lado na mobilização: q<sub>Lula</sub> + q<sub>Flávio</sub> = 100%, cada uma entre 25% e 75%. Se R &gt; 0, Lula recebe R × q<sub>Lula</sub> e Flávio R × q<sub>Flávio</sub>. Se R &lt; 0, Lula perde |R| × q<sub>Flávio</sub> e Flávio perde |R| × q<sub>Lula</sub>: quem leva mais eleitores ganha mais e perde menos.</li>
+        <li><b>7. Resultado.</b> F = F<sub>m</sub> + parte de Flávio; L = L<sub>m</sub> + parte de Lula; % de Flávio = F ÷ (F + L), em votos válidos.</li>
         <li><b>Probabilidade do placar.</b> Chance de a variação real da abstenção ficar a ±0,25 ponto do valor escolhido, numa distribuição normal com média +1,0 (projeção central) e desvio 1,3 (desvio das seis variações históricas, 1,34). P = Φ((v + 0,25 − 1,0) ÷ 1,3) − Φ((v − 0,25 − 1,0) ÷ 1,3).</li>
         <li><b>Projeção central +1,0.</b> Variação média 2002–2022: +1,78; média 2014–2022: +0,77; regressão entre margem de vitória e variação (r = 0,65, seis pontos): 0,59 + 0,099 × margem, que dá +1,1 para margem de 5 pontos. Julgamento do autor, sem pretensão estatística.</li>
       </ul>
@@ -179,7 +180,8 @@
       <h3>Histórico da abstenção (1º → 2º turno)</h3>
       <ul>
         <li>2002: 17,74% → 20,47% (+2,73) · 2006: 16,75% → 18,99% (+2,24) · 2010: 18,12% → 21,50% (+3,38) · 2014: 19,39% → 21,10% (+1,71) · 2018: 20,32% → 21,29% (+0,97) · 2022: 20,95% → 20,59% (−0,36). 1998: 21,49% em turno único.</li>
-        <li>+8% relativo sobre 21,07% = +1,69 ponto.</li>
+        <li>+8% relativo sobre 21,08% = +1,69 ponto.</li>
+        <li>Inválidos (brancos e nulos) sobre o comparecimento, 1º → 2º turno: 2002: 10,39% → 6,00%; 2006: 8,39% → 6,04%; 2010: 8,64% → 6,70%; 2018: 10,75% → 9,58%; 2022: 4,41% → 4,66%. 2026, 1º turno: 4,77%.</li>
         <li>Em 2022 foi a primeira vez que o comparecimento subiu no 2º turno, associado à mobilização da polarização e à gratuidade de transporte em várias cidades.</li>
       </ul>
 
@@ -195,7 +197,7 @@
       <h3>Fontes consultadas</h3>
       <ul class="links">
         <li><a href="https://resultados.tse.jus.br/" target="_blank" rel="noopener">TSE · resultados da eleição</a></li>
-        <li>Eleição presidencial no Brasil (Wikipedia): <a href="https://pt.wikipedia.org/wiki/Eleição_presidencial_no_Brasil_em_1998" target="_blank" rel="noopener">1998</a> · <a href="https://pt.wikipedia.org/wiki/Eleição_presidencial_no_Brasil_em_2002" target="_blank" rel="noopener">2002</a> · <a href="https://pt.wikipedia.org/wiki/Eleição_presidencial_no_Brasil_em_2006" target="_blank" rel="noopener">2006</a> · <a href="https://pt.wikipedia.org/wiki/Eleição_presidencial_no_Brasil_em_2010" target="_blank" rel="noopener">2010</a> · <a href="https://pt.wikipedia.org/wiki/Eleição_presidencial_no_Brasil_em_2014" target="_blank" rel="noopener">2014</a> · <a href="https://pt.wikipedia.org/wiki/Eleição_presidencial_no_Brasil_em_2018" target="_blank" rel="noopener">2018</a></li>
+        <li>Eleição presidencial no Brasil (Wikipedia): <a href="https://pt.wikipedia.org/wiki/Eleição_presidencial_no_Brasil_em_1998" target="_blank" rel="noopener">1998</a> · <a href="https://pt.wikipedia.org/wiki/Eleição_presidencial_no_Brasil_em_2002" target="_blank" rel="noopener">2002</a> · <a href="https://pt.wikipedia.org/wiki/Eleição_presidencial_no_Brasil_em_2006" target="_blank" rel="noopener">2006</a> · <a href="https://pt.wikipedia.org/wiki/Eleição_presidencial_no_Brasil_em_2010" target="_blank" rel="noopener">2010</a> · <a href="https://pt.wikipedia.org/wiki/Eleição_presidencial_no_Brasil_em_2014" target="_blank" rel="noopener">2014</a> · <a href="https://pt.wikipedia.org/wiki/Eleição_presidencial_no_Brasil_em_2018" target="_blank" rel="noopener">2018</a> · <a href="https://pt.wikipedia.org/wiki/Eleição_presidencial_no_Brasil_em_2022" target="_blank" rel="noopener">2022</a> (votos inválidos e comparecimento; 1º turno de 2022 conforme o TSE)</li>
         <li><a href="https://diariodotransporte.com.br/2022/10/31/abstencao-no-2o-turno-foi-menor-que-no-1o-e-gratuidades-nos-transportes-podem-ajudar-a-explicar-segundo-o-tse/" target="_blank" rel="noopener">Abstenção no 2º turno de 2022 (Diário do Transporte, TSE)</a></li>
         <li><a href="https://www.gazetadopovo.com.br/republica/abstencao-avanca-ha-cinco-eleicoes-seguidas-e-desafia-a-corrida-presidencial-de-2026/" target="_blank" rel="noopener">Abstenção avança há cinco eleições seguidas (Gazeta do Povo)</a></li>
         <li><a href="https://www.cnnbrasil.com.br/eleicoes/analise-abstencao-no-1o-turno-presidencial-cresce-desde-2006/" target="_blank" rel="noopener">Abstenção no 1º turno cresce desde 2006 (CNN Brasil)</a></li>
@@ -213,9 +215,11 @@
 <script>
 // ---- resultado final do 1º turno (TSE, 99,99% das seções, 04/10/2026 23:37), fixo ----
 const FLAVIO = 56103520, LULA = 53873874;
-const VALIDOS_SOBRE_COMPARECIMENTO = 119293979 / 125268748;   // votos nominais / comparecimento
-const COMPARECIMENTO = 124483085, ABSTENCAO = 33236331;       // placar de partida: 21,07%
-const ELEITORADO = COMPARECIMENTO + ABSTENCAO, ABST1 = ABSTENCAO / ELEITORADO * 100;
+const ELEITORADO = 158745502, T1 = 125268748, ABSTENCAO = 33467898;   // TSE, fechamento do 1º turno
+const ABST1 = ABSTENCAO / ELEITORADO * 100;                         // 21,08%: placar de partida
+const V1 = 119293979;                                               // votos nominais do 1º turno
+const INV1 = (2300739 + 3668784) / T1;                              // brancos e nulos sobre o comparecimento (4,77%)
+const K_INV = 0.97;                                                 // inválidos no 2º turno = 1º turno × 0,97 (média das razões de 2018 e 2022)
 
 // variação histórica da abstenção do 1º para o 2º turno (pontos percentuais, TSE)
 const MU = 1.0, SIGMA = 1.3;   // projeção central e dispersão histórica
@@ -263,24 +267,26 @@ function desenhar(){
     const p = Phi((dpp+0.25-MU)/SIGMA) - Phi((dpp-0.25-MU)/SIGMA);
     $('obs').textContent = p<0.01 ? 'Probabilidade < 1% (±0,25 p.p.)' : 'Probabilidade ≈ '+nf(p*100,0)+'% (±0,25 p.p.)';
   }
-  // votos afetados: quem não migra já faz parte da abstenção; o restante sai dos eleitores conforme o controle
+  // votos válidos do 2º turno fixados pelo cenário; o restante (V2 − migrados) é distribuído pela barra
   const m = migracao();
-  const E = dpp/100*ELEITORADO*VALIDOS_SOBRE_COMPARECIMENTO;
-  let rem = E - m.N; if (E>=0 && rem<0) rem = 0;
-  const s = +$('sl-quem').value;                       // % da abstenção que vem de eleitores de Lula (25 a 75; à esquerda, Lula leva mais eleitores às urnas)
-  const F = m.F - rem*(100-s)/100, L = m.L - rem*s/100, T = F+L;
+  const T2 = T1 - dpp/100*ELEITORADO;                   // comparecimento do 2º turno
+  const V2 = T2 * (1 - INV1*K_INV);                     // votos válidos do 2º turno
+  const R = V2 - (V1 - m.N);                            // > 0: votos a mais; < 0: votos a menos
+  const v = +$('sl-quem').value, qF = v, qL = 100 - v;  // participação de cada lado na mobilização (25 a 75; à esquerda, Lula leva mais)
+  const gF = R>=0 ? R*qF/100 : R*qL/100;                // quem leva mais ganha mais e perde menos
+  const gL = R>=0 ? R*qL/100 : R*qF/100;
+  const F = m.F + gF, L = m.L + gL, T = F+L;
   const pf = F/T*100, pl = L/T*100, dif = Math.abs(pf-pl);
   $('pf').textContent = nf(pf,1)+'%'; $('pl').textContent = nf(pl,1)+'%';
   $('bar').innerHTML = `<i style="width:${pf}%;background:var(--f)"></i><i style="width:${pl}%;background:var(--l)"></i>`;
   $('lead').innerHTML = `<b>${F>=L?'Flávio':'Lula'}</b> à frente por <b>${nf(dif)}</b> pontos · ${int(Math.abs(F-L))} votos`;
-  // quem deixa de votar
-  const neg = rem < 0, txt = neg ? 'votos a mais' : 'abstenção';
-  $('cl').textContent = s+'%'; $('cf').textContent = (100-s)+'%';
-  $('cls').textContent = `${neg?'a mais':'da abstenção'} · ${mi(Math.abs(rem)*s/100)}`; $('cfs').textContent = `${neg?'a mais':'da abstenção'} · ${mi(Math.abs(rem)*(100-s)/100)}`;
+  // quem leva mais eleitores
+  $('cl').textContent = qL+'%'; $('cf').textContent = qF+'%';
+  $('cls').textContent = `${R>=0?'ganha':'perde'} ${mi(Math.abs(gL))}`; $('cfs').textContent = `${R>=0?'ganha':'perde'} ${mi(Math.abs(gF))}`;
   // dicas ao passar o mouse nos títulos
-  $('t-abs').title = `Abstenção do 1º turno: ${nf(ABST1)}%. Projetada para o 2º turno: ${nf(a2)}%. Equivale a ${mi(Math.abs(E/VALIDOS_SOBRE_COMPARECIMENTO))} de eleitores a ${E>=0?'menos':'mais'} nas urnas. Inclui os ${mi(m.N)} que não migram dos demais candidatos; o controle abaixo distribui o restante (${mi(Math.abs(rem))}, ${txt}).`;
+  $('t-abs').title = `Abstenção do 1º turno: ${nf(ABST1)}%. Projetada para o 2º turno: ${nf(a2)}%. Comparecimento: ${nf(Math.abs(T2-T1)/1e6,2)} mi a ${T2<T1?'menos':'mais'} que no 1º turno. Votos válidos projetados: ${int(V2)} (inválidos em ${nf(INV1*K_INV*100)}%, contra ${nf(INV1*100)}% no 1º turno). Os ${mi(m.N)} que não migram já estão nesse total; o restante (${mi(Math.abs(R))}, ${R>=0?'votos a mais':'votos a menos'}) é distribuído pela barra abaixo.`;
   const prop = Math.round(m.L/(m.F+m.L)*100);
-  $('t-quem').title = `Divide a abstenção entre os eleitores de cada lado: à esquerda, Lula leva mais eleitores às urnas (só 25% da abstenção é dele); à direita, é Flávio (75%). Referência: dividir em proporção ao tamanho de cada eleitorado seria ${prop}% de Lula e ${100-prop}% de Flávio. O centro (50/50) tira o mesmo número de votos de cada lado.`;
+  $('t-quem').title = `Divide entre os dois lados quem leva eleitores às urnas. Quem leva mais fica com a maior parte dos votos a mais (se mais eleitores forem votar) e perde a menor parte (se mais eleitores ficarem em casa). Referência: proporcional ao tamanho dos eleitorados seria Lula ${prop}% e Flávio ${100-prop}%. O centro (50/50) divide em partes iguais.`;
 }
 
 function cartoes(){
