@@ -3,7 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Projeção 2º turno</title>
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline' https://gc.zgo.at; style-src 'unsafe-inline'; img-src data: https://*.goatcounter.com; connect-src https://*.goatcounter.com; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Simulador 2º turno</title>
 <style>
   :root {
     --bg:#f4f5f7; --panel:#ffffff; --ink:#14181f; --muted:#68717e; --line:#e3e6eb; --soft:#eff1f4;
@@ -159,7 +161,7 @@
     <div class="src-body">
       <h3>Dados do 1º turno (fixos)</h3>
       <ul>
-        <li>Resultado final da apuração do TSE, eleição 6257 (1º turno, presidente), 99,99% das seções, 04/10/2026 às 23:37:27. <a href="https://resultados.tse.jus.br/" target="_blank" rel="noopener">resultados.tse.jus.br</a></li>
+        <li>Resultado final da apuração do TSE, eleição 6257 (1º turno, presidente), 99,99% das seções, 04/10/2026 às 23:37:27. <a href="https://resultados.tse.jus.br/" target="_blank" rel="noopener noreferrer">resultados.tse.jus.br</a></li>
         <li>Votos: Flávio Bolsonaro 56.103.520; Lula 53.873.874; Augusto Cury 3.448.500; Renan Santos 2.675.872; Ronaldo Caiado 2.605.080; Zema 326.485; Clariana Barão e Wilson Grassi 56.919; Samara, Hertz Dias, Edmilson Costa e Rui Costa Pimenta 203.729. Soma (votos nominais): V1 = 119.293.979.</li>
         <li>Eleitorado 158.745.502; comparecimento T1 = 125.268.748; abstenção 33.467.898 (21,08%). Brancos 2.300.739 e nulos 3.668.784: inválidos = 4,77% do comparecimento.</li>
       </ul>
@@ -194,17 +196,22 @@
         <li>Limites: o modelo não trata a queda de brancos e nulos no 2º turno nem diferenças entre estados. É uma simulação aritmética, não previsão nem pesquisa.</li>
       </ul>
 
+      <div id="priv" hidden>
+        <h3>Privacidade</h3>
+        <ul><li>Esta página conta acessos e o uso dos controles de forma anônima, com o GoatCounter: sem cookies, sem guardar o endereço IP completo e sem identificar pessoas. Nada do que você mexe no simulador é enviado, só o fato de ter usado cada controle. Quem ativa "não rastrear" no navegador não é contado.</li></ul>
+      </div>
+
       <h3>Fontes consultadas</h3>
       <ul class="links">
-        <li><a href="https://resultados.tse.jus.br/" target="_blank" rel="noopener">TSE · resultados da eleição</a></li>
-        <li>Eleição presidencial no Brasil (Wikipedia): <a href="https://pt.wikipedia.org/wiki/Eleição_presidencial_no_Brasil_em_1998" target="_blank" rel="noopener">1998</a> · <a href="https://pt.wikipedia.org/wiki/Eleição_presidencial_no_Brasil_em_2002" target="_blank" rel="noopener">2002</a> · <a href="https://pt.wikipedia.org/wiki/Eleição_presidencial_no_Brasil_em_2006" target="_blank" rel="noopener">2006</a> · <a href="https://pt.wikipedia.org/wiki/Eleição_presidencial_no_Brasil_em_2010" target="_blank" rel="noopener">2010</a> · <a href="https://pt.wikipedia.org/wiki/Eleição_presidencial_no_Brasil_em_2014" target="_blank" rel="noopener">2014</a> · <a href="https://pt.wikipedia.org/wiki/Eleição_presidencial_no_Brasil_em_2018" target="_blank" rel="noopener">2018</a> · <a href="https://pt.wikipedia.org/wiki/Eleição_presidencial_no_Brasil_em_2022" target="_blank" rel="noopener">2022</a> (votos inválidos e comparecimento; 1º turno de 2022 conforme o TSE)</li>
-        <li><a href="https://diariodotransporte.com.br/2022/10/31/abstencao-no-2o-turno-foi-menor-que-no-1o-e-gratuidades-nos-transportes-podem-ajudar-a-explicar-segundo-o-tse/" target="_blank" rel="noopener">Abstenção no 2º turno de 2022 (Diário do Transporte, TSE)</a></li>
-        <li><a href="https://www.gazetadopovo.com.br/republica/abstencao-avanca-ha-cinco-eleicoes-seguidas-e-desafia-a-corrida-presidencial-de-2026/" target="_blank" rel="noopener">Abstenção avança há cinco eleições seguidas (Gazeta do Povo)</a></li>
-        <li><a href="https://www.cnnbrasil.com.br/eleicoes/analise-abstencao-no-1o-turno-presidencial-cresce-desde-2006/" target="_blank" rel="noopener">Abstenção no 1º turno cresce desde 2006 (CNN Brasil)</a></li>
-        <li><a href="https://www.correiobraziliense.com.br/politica/2022/10/5043124-datafolha-bolsonaro-herda-mais-votos-de-ciro-do-que-lula-os-de-tebet-se-dividem.html" target="_blank" rel="noopener">Datafolha 2022: destino dos votos de Ciro e Tebet (Correio Braziliense)</a></li>
-        <li><a href="https://www.noticiasagricolas.com.br/noticias/politica-economia/329538-reuters-lula-atrai-mais-eleitores-de-simone-tebet-do-que-de-ciro-mostra-poder-data.amp.html" target="_blank" rel="noopener">PoderData 2022 (Reuters)</a></li>
-        <li><a href="https://abcdoabc.com.br/estudo-mede-quanto-ideologia-afeta-eleitor-na-transferencia-de-votos-nas-eleicoes/" target="_blank" rel="noopener">Estudo da UFPE sobre ideologia e transferência de votos</a></li>
-        <li><a href="https://repositorio.unb.br/handle/10482/27678?locale=en" target="_blank" rel="noopener">Repositório da UnB sobre transferência de votos</a></li>
+        <li><a href="https://resultados.tse.jus.br/" target="_blank" rel="noopener noreferrer">TSE · resultados da eleição</a></li>
+        <li>Eleição presidencial no Brasil (Wikipedia): <a href="https://pt.wikipedia.org/wiki/Eleição_presidencial_no_Brasil_em_1998" target="_blank" rel="noopener noreferrer">1998</a> · <a href="https://pt.wikipedia.org/wiki/Eleição_presidencial_no_Brasil_em_2002" target="_blank" rel="noopener noreferrer">2002</a> · <a href="https://pt.wikipedia.org/wiki/Eleição_presidencial_no_Brasil_em_2006" target="_blank" rel="noopener noreferrer">2006</a> · <a href="https://pt.wikipedia.org/wiki/Eleição_presidencial_no_Brasil_em_2010" target="_blank" rel="noopener noreferrer">2010</a> · <a href="https://pt.wikipedia.org/wiki/Eleição_presidencial_no_Brasil_em_2014" target="_blank" rel="noopener noreferrer">2014</a> · <a href="https://pt.wikipedia.org/wiki/Eleição_presidencial_no_Brasil_em_2018" target="_blank" rel="noopener noreferrer">2018</a> · <a href="https://pt.wikipedia.org/wiki/Eleição_presidencial_no_Brasil_em_2022" target="_blank" rel="noopener noreferrer">2022</a> (votos inválidos e comparecimento; 1º turno de 2022 conforme o TSE)</li>
+        <li><a href="https://diariodotransporte.com.br/2022/10/31/abstencao-no-2o-turno-foi-menor-que-no-1o-e-gratuidades-nos-transportes-podem-ajudar-a-explicar-segundo-o-tse/" target="_blank" rel="noopener noreferrer">Abstenção no 2º turno de 2022 (Diário do Transporte, TSE)</a></li>
+        <li><a href="https://www.gazetadopovo.com.br/republica/abstencao-avanca-ha-cinco-eleicoes-seguidas-e-desafia-a-corrida-presidencial-de-2026/" target="_blank" rel="noopener noreferrer">Abstenção avança há cinco eleições seguidas (Gazeta do Povo)</a></li>
+        <li><a href="https://www.cnnbrasil.com.br/eleicoes/analise-abstencao-no-1o-turno-presidencial-cresce-desde-2006/" target="_blank" rel="noopener noreferrer">Abstenção no 1º turno cresce desde 2006 (CNN Brasil)</a></li>
+        <li><a href="https://www.correiobraziliense.com.br/politica/2022/10/5043124-datafolha-bolsonaro-herda-mais-votos-de-ciro-do-que-lula-os-de-tebet-se-dividem.html" target="_blank" rel="noopener noreferrer">Datafolha 2022: destino dos votos de Ciro e Tebet (Correio Braziliense)</a></li>
+        <li><a href="https://www.noticiasagricolas.com.br/noticias/politica-economia/329538-reuters-lula-atrai-mais-eleitores-de-simone-tebet-do-que-de-ciro-mostra-poder-data.amp.html" target="_blank" rel="noopener noreferrer">PoderData 2022 (Reuters)</a></li>
+        <li><a href="https://abcdoabc.com.br/estudo-mede-quanto-ideologia-afeta-eleitor-na-transferencia-de-votos-nas-eleicoes/" target="_blank" rel="noopener noreferrer">Estudo da UFPE sobre ideologia e transferência de votos</a></li>
+        <li><a href="https://repositorio.unb.br/handle/10482/27678?locale=en" target="_blank" rel="noopener noreferrer">Repositório da UnB sobre transferência de votos</a></li>
       </ul>
     </div>
   </details>
@@ -246,6 +253,23 @@ const $ = id => document.getElementById(id);
 const nf = (n,d=2) => n.toLocaleString('pt-BR',{minimumFractionDigits:d,maximumFractionDigits:d});
 const int = n => Math.round(n).toLocaleString('pt-BR');
 const mi = n => nf(n/1e6,2)+' mi';
+
+// ---- contagem anônima de uso (GoatCounter). Vazio = desligada. Código: o nome da conta em goatcounter.com ----
+const GC_CODE = '';
+const _contados = {};
+function contar(evento){
+  if (!GC_CODE || _contados[evento]) return;               // cada tipo de uso conta uma vez por visita
+  _contados[evento] = true;
+  try { if (window.goatcounter && window.goatcounter.count) window.goatcounter.count({ path:'uso/'+evento, title:evento, event:true }); } catch (e) {}
+}
+function iniciarContagem(){
+  if (!GC_CODE || navigator.doNotTrack === '1' || navigator.globalPrivacyControl) return;   // respeita "não rastrear"
+  const sc = document.createElement('script');
+  sc.async = true; sc.src = 'https://gc.zgo.at/count.js';
+  sc.dataset.goatcounter = 'https://' + GC_CODE + '.goatcounter.com/count';
+  document.head.appendChild(sc);
+  $('priv').hidden = false;
+}
 
 function erf(x){ const s=x<0?-1:1; x=Math.abs(x); const t=1/(1+0.3275911*x);
   const y=1-(((((1.061405429*t-1.453152027)*t)+1.421413741)*t-0.284496736)*t+0.254829592)*t*Math.exp(-x*x); return s*y; }
@@ -331,6 +355,12 @@ $('sl-quem').addEventListener('input', desenhar);
 $('reset').addEventListener('click', ()=>{ R = PADRAO.map(r=>({...r})); cartoes(); desenhar(); });
 
 cartoes(); desenhar();
+$('sl-abs').addEventListener('input', () => contar('abstencao'));
+$('sl-quem').addEventListener('input', () => contar('quem-leva-mais'));
+$('cands').addEventListener('pointerdown', e => { if (e.target.closest('.step')) contar('transferencia'); });
+$('reset').addEventListener('click', () => contar('restaurar'));
+document.querySelector('details.src').addEventListener('toggle', e => { if (e.target.open) contar('fontes'); });
+iniciarContagem();
 </script>
 </body>
 </html>
